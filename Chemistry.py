@@ -31,15 +31,11 @@ def molar_mass(atom_list):
 def stoichiometry (start_chem,start_mol,end_chem,end_mol,start_mass=None,start_vol = None):
     #Take an entered value in grams or L and give you the conversion through a chemical reaction.
     molecule_start = molar_mass(start_chem)
-    mol_start = start_mol
     molecule_end = molar_mass(end_chem)
-    mol_end = end_mol
-    starting_mass = start_mass
-    starting_volume = start_vol
     
-    if starting_volume == None:
-        return str((molecule_start*starting_mass)*(mol_start/mol_end)/molecule_end) + "g"
-    else: return str(start_vol*(mol_start/mol_end)) + "L"
+    if start_vol == None:
+        return str((molecule_start*start_mass)*(start_mol/end_mol)/molecule_end) + "g"
+    else: return str(start_vol*(start_mol/end_mol)) + "L"
 
 #This function lets you calculate either p,n,T,or V using the ideal gas law. The function calculates for the variable not enetered, Pressure (atm) = p;  volume (L) = v; temperature (K) = temp; n = moles    
 def ideal_gas_law(p = None,v = None,n = None, temp=None):
@@ -52,5 +48,3 @@ def ideal_gas_law(p = None,v = None,n = None, temp=None):
         return str((p*v)/(n*r)) + "K"
     elif v == None:
         return str((n * r * temp)/p) + "L"
-
-print(molar_mass(["K", "O", "H"]))
